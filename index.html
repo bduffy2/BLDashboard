@@ -69,6 +69,15 @@
                 <span>Epoch Time</span>
               </button>
             </li>
+            <li class="nav-item" data-tool="diff">
+              <button id="nav-diff-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="9" height="18" rx="1"></rect>
+                  <rect x="13" y="3" width="9" height="18" rx="1"></rect>
+                </svg>
+                <span>Text Diff</span>
+              </button>
+            </li>
           </ul>
         </nav>
         <div class="sidebar-footer">
@@ -337,6 +346,84 @@
                     <span class="epoch-result-val" id="date-res-ms" title="Click to copy">--</span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Text Comparison View -->
+        <section id="diff-view" class="tool-view">
+          <div class="diff-layout">
+            <!-- Options & Controls Card -->
+            <div class="card diff-options">
+              <div class="option-controls">
+                <div class="tabs">
+                  <button class="tab-btn active" id="diff-mode-split">Side-by-Side</button>
+                  <button class="tab-btn" id="diff-mode-unified">Unified</button>
+                </div>
+                
+                <div style="height: 24px; width: 1px; background: var(--border-color); margin: 0 8px;"></div>
+                
+                <div class="toggle-container active" id="diff-whitespace-toggle">
+                  <div class="toggle-switch"></div>
+                  <span class="toggle-label">Ignore Whitespace</span>
+                </div>
+                
+                <div class="toggle-container" id="diff-case-toggle">
+                  <div class="toggle-switch"></div>
+                  <span class="toggle-label">Ignore Case</span>
+                </div>
+              </div>
+              
+              <div class="option-controls">
+                <button class="btn btn-secondary" id="diff-sample-btn">Load Sample</button>
+                <button class="btn btn-secondary" id="diff-swap-btn">Swap Inputs</button>
+                <button class="btn btn-primary" id="diff-compare-btn">Compare</button>
+              </div>
+            </div>
+
+            <!-- Input Panes (Textareas) -->
+            <div class="diff-editors" id="diff-input-container">
+              <!-- Left Input (Original) -->
+              <div class="editor-pane">
+                <div class="editor-pane-header">
+                  <span class="editor-title">Original Text (Left)</span>
+                  <button class="btn btn-secondary" id="diff-clear-left-btn" style="padding: 6px 12px; font-size: 12px; border-radius: 6px;">Clear</button>
+                </div>
+                <div class="editor-wrapper">
+                  <textarea class="monospace" id="diff-input-left" placeholder="Paste the original version of your text here..."></textarea>
+                </div>
+              </div>
+
+              <!-- Right Input (Modified) -->
+              <div class="editor-pane">
+                <div class="editor-pane-header">
+                  <span class="editor-title">Modified Text (Right)</span>
+                  <button class="btn btn-secondary" id="diff-clear-right-btn" style="padding: 6px 12px; font-size: 12px; border-radius: 6px;">Clear</button>
+                </div>
+                <div class="editor-wrapper">
+                  <textarea class="monospace" id="diff-input-right" placeholder="Paste the modified version of your text here..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Results Panel (Comparison Output) -->
+            <div class="card diff-results-card" id="diff-results-card" style="display: none;">
+              <div class="diff-results-header">
+                <div class="diff-stats" id="diff-stats">
+                  <!-- Stats will populate here -->
+                </div>
+                <button class="btn btn-secondary" id="diff-copy-btn" style="padding: 8px 16px; font-size: 13px;">Copy Diff</button>
+              </div>
+              
+              <!-- Split View Container -->
+              <div class="diff-split-view" id="diff-split-container">
+                <!-- Grid rows will populate here dynamically -->
+              </div>
+
+              <!-- Unified View Container -->
+              <div class="diff-unified-view" id="diff-unified-container" style="display: none;">
+                <!-- Grid rows will populate here dynamically -->
               </div>
             </div>
           </div>

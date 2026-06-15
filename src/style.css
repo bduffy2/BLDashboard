@@ -1085,6 +1085,257 @@ textarea.monospace {
   }
 }
 
+/* 5. Text Comparison (Diff) Tool Styles */
+.diff-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.diff-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.diff-editors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.diff-editors textarea {
+  flex-grow: 1;
+  resize: vertical;
+  min-height: 200px;
+  padding: 16px;
+}
+
+.diff-results-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.diff-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.diff-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.diff-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.diff-status-indicator.status-clean {
+  color: var(--success);
+}
+
+.diff-status-indicator svg {
+  flex-shrink: 0;
+}
+
+.diff-stat-chip {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.chip-modified {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.25);
+  color: #c084fc;
+}
+
+.chip-added {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.chip-deleted {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+}
+
+/* Scrollable views */
+.diff-split-view, .diff-unified-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  border-radius: 12px;
+  background: rgba(8, 10, 16, 0.6);
+  border: 1px solid var(--border-color);
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+/* Row display grids */
+.diff-split-view .diff-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px 1fr;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.diff-unified-view .diff-row {
+  display: grid;
+  grid-template-columns: 50px 50px 1fr;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.diff-row:last-child {
+  border-bottom: none;
+}
+
+.diff-line-number {
+  color: var(--text-muted);
+  text-align: right;
+  padding: 6px 12px;
+  user-select: none;
+  background: rgba(8, 10, 16, 0.3);
+  border-right: 1px solid var(--border-color);
+  font-weight: 500;
+  height: 100%;
+}
+
+.diff-line-content {
+  padding: 6px 16px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.diff-line-prefix {
+  user-select: none;
+  font-weight: bold;
+  margin-right: 8px;
+  width: 12px;
+  display: inline-block;
+  opacity: 0.6;
+}
+
+/* Dividing Border in Split View */
+.border-divider {
+  border-right: 1px solid var(--border-color);
+}
+
+/* Empty / Filler slots */
+.empty-cell {
+  background: rgba(8, 10, 16, 0.2);
+}
+
+.filler-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 6px,
+    transparent 6px,
+    transparent 12px
+  ) !important;
+}
+
+/* Line background modifiers */
+.row-unchanged {
+  color: var(--text-secondary);
+}
+
+.row-unchanged:hover {
+  background: rgba(255, 255, 255, 0.01);
+  color: var(--text-primary);
+}
+
+/* Red / Green Highlights */
+.row-deleted {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+}
+
+.row-deleted .diff-line-number {
+  background: rgba(239, 68, 68, 0.18);
+  color: #ef4444;
+}
+
+.row-added {
+  background: rgba(16, 185, 129, 0.12);
+  color: #a7f3d0;
+}
+
+.row-added .diff-line-number {
+  background: rgba(16, 185, 129, 0.18);
+  color: #10b981;
+}
+
+.row-modified {
+  color: var(--text-primary);
+}
+
+/* Split view cell overrides in modifications */
+.diff-split-view .row-modified .diff-line-content:nth-of-type(1) {
+  background: rgba(239, 68, 68, 0.06);
+  color: #fca5a5;
+}
+
+.diff-split-view .row-modified .diff-line-number:nth-of-type(1) {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.diff-split-view .row-modified .diff-line-content:nth-of-type(2) {
+  background: rgba(16, 185, 129, 0.06);
+  color: #a7f3d0;
+}
+
+.diff-split-view .row-modified .diff-line-number:nth-of-type(2) {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+}
+
+/* Character highlight highlights */
+.diff-char-delete {
+  background: rgba(239, 68, 68, 0.35);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.6);
+  border-radius: 2px;
+  font-weight: 500;
+  color: #fee2e2;
+  padding: 1px 0;
+}
+
+.diff-char-add {
+  background: rgba(16, 185, 129, 0.35);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.6);
+  border-radius: 2px;
+  font-weight: 500;
+  color: #ecfdf5;
+  padding: 1px 0;
+}
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
   body {
@@ -1148,5 +1399,22 @@ textarea.monospace {
   
   .epoch-converter-grid {
     grid-template-columns: 1fr;
+  }
+
+  .diff-options {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .diff-options .option-controls {
+    justify-content: space-between;
+  }
+
+  .diff-editors {
+    grid-template-columns: 1fr;
+  }
+
+  .diff-editors textarea {
+    min-height: 160px;
   }
 }
