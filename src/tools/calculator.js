@@ -153,7 +153,7 @@ function renderHistory() {
   container.innerHTML = history.map((item, index) => `
     <div class="calc-history-item" data-index="${index}">
       <div class="calc-hist-expr">${item.expr}</div>
-      <div class="calc-hist-res">${item.res}</div>
+      <div class="calc-hist-res">= ${item.res}</div>
     </div>
   `).join('');
 
