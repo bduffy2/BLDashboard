@@ -3,6 +3,7 @@ import { initCalculator } from './tools/calculator.js';
 import { initFormatter } from './tools/formatter.js';
 import { initUuid } from './tools/uuid.js';
 import { initEpoch } from './tools/epoch.js';
+import { initDiff } from './tools/diff.js';
 
 // Global Toast System
 window.showToast = function(message, type = 'success') {
@@ -59,6 +60,10 @@ const toolsInfo = {
   epoch: {
     title: 'Epoch Timestamp Converter',
     desc: 'Real-time Unix epoch clock and bidirectional timestamp converter.'
+  },
+  diff: {
+    title: 'Text Comparison Tool',
+    desc: 'Compare two texts side-by-side or inline to find character-level differences.'
   }
 };
 
@@ -106,4 +111,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormatter();
   initUuid();
   initEpoch();
+  initDiff();
 });
